@@ -1,0 +1,10 @@
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (1, 'check1', 15762);
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (2, 'check2', 92202);
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (3, 'kY1?WEY6I43yc%', 61805);
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (4, 'yE6>ZRRH3', 81715);
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (5, 'zB3''4U,1Kq{Dy\aa', 95296);
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (6, 'kJ6|y''>7,@>3"54B', 87683);
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (7, 'eQ8{=wH_$tSpc4', 21470);
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (8, 'lO7\zQo+.dQSpB!', 77015);
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (9, 'uR2>6P`~bw', 60280);
+insert into LoginAsAdmin (ID, Password, SecurityCode) values (10, 'lG3,yddM', 53732);

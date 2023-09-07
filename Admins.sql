@@ -1,0 +1,10 @@
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (1, 'Worden', 'Bourgourd', 64618, 'wbourgourd0@pagesperso-orange.fr', 'Room 1336');
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (2, 'Morty', 'Welberry', 195293, 'mwelberry1@huffingtonpost.com', 'Room 1807');
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (3, 'Merna', 'Durward', 287510, 'mdurward2@netlog.com', 'Room 400');
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (4, 'Tania', 'Foss', 256873, 'tfoss3@techcrunch.com', 'PO Box 82053');
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (5, 'Emmalee', 'Pfiffer', 182279, 'epfiffer4@loc.gov', 'Suite 86');
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (6, 'Gearalt', 'Vinker', 170392, 'gvinker5@mozilla.com', 'Room 690');
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (7, 'Minny', 'Ryan', 104509, 'mryan6@miitbeian.gov.cn', 'Room 1182');
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (8, 'Natividad', 'Harragin', 198710, 'nharragin7@blogtalkradio.com', 'Apt 1372');
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (9, 'Demeter', 'Mc Coughan', 107833, 'dmccoughan8@walmart.com', 'Suite 64');
+insert into Employees (ID, First_Name, Last_Name, Salary, Email, Address) values (10, 'Ade', 'Dockwra', 212101, 'adockwra9@zdnet.com', '7th Floor');
