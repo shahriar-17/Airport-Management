@@ -1,184 +1,177 @@
-*
-{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
 }
-.bg
-{
-    height: 100%;
-	width: 100%;
-	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(/images/2.jpg);
-	background-position: center;
-	background-size: cover;
-	position: absolute;
+
+html {
+	box-sizing: border-box;
 }
-.navigationBar
-{
-    display: flex;
-    align-items: center;
-    padding: 20px;
-    padding-left: 50px;
-    padding-right: 30px;
-    padding-top: 50px;
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
 }
-nav
-{
-    flex: 1;
-    text-align: right;
+
+.column {
+	float: left;
+	width: 80%;
+	margin-bottom: 16px;
+	padding: 0 8px;
+	margin-left: 450;
 }
-nav ul 
-{
-    display: inline-block;
-    list-style: none;
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin: 8px;
+	align-items: center;
 }
-nav ul li
-{
-    display: inline-block;
-    margin-right: 70px;
+
+.about-section {
+	padding-top: 10;
+	padding: auto;
+	text-align: center;
+	background-color: #150886;
+	color: white;
+	height: 15%;
+	font-family: Georgia, 'Times New Roman', Times, serif
 }
-nav ul li a
-{
-    text-decoration: none;
-    font-size: 20px;
-    color: white;
-    font-family: sans-serif;
+
+.container {
+	padding: 0 16px;
+	margin-left: 350px;
 }
-nav ul li button /* useless */
-{
-    font-size: 20px;
-    color: white;
-    outline: none;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-family: sans-serif;
+
+.container::after,
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
 }
-nav ul li button:hover  /* useless */
-{
-    color: aqua;
+
+.title {
+	color: grey;
 }
-nav ul li a:hover
-{
-    color: aqua;
-}
-a
-{
-    text-decoration: none;
-    color: palevioletred;
-    font-size: 28px;
-}
-.login-page {
-    width: 480px; /* Increased width by 50 pixels */
-    height: 550px;
-    position: relative;
-    margin: 2% auto;
-    margin-top: 100px;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    overflow: hidden;
-    
-    /* Transition for opacity property */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-#login-form
-{
-    display: none;
-}
-.form-box
-{
-    width:380px;
-	height:550px;
-	position:relative;
-	margin:2% auto;
-	background:rgba(0,0,0,0.3);
-	padding:10px;
-    overflow: hidden;
-}
-.button-box
-{
-	width:220px;
-	margin:35px auto;
-	position:relative;
-	box-shadow: 0 0 20px 9px #ff61241f;
-	border-radius: 30px;
-}
-.toggle-btn
-{
-	padding:10px 30px;
-	cursor:pointer;
-	background:transparent;
-	border:0;
-	outline: none;
-	position: relative;
-}
-#btn
-{
-	top: 0;
-	left:0;
-	position: absolute;
-	width: 110px;
-	height: 100%;
-	background: #F3C693;
-	border-radius: 30px;
-	transition: .5s;
-}
-.input-group-login
-{
-	top: 150px;
-	position:absolute;
-	width:280px;
-	transition:.5s;
-}
-.input-group-register
-{
-    top: 120px;
-	position:absolute;
-	width:280px;
-	transition:.5s;
-}
-.input-field
-{
-	width: 100%;
-	padding:10px 0;
-	margin:5px 0;
-	border-left:0;
-	border-top:0;
-	border-right:0;
-	border-bottom: 1px solid #999;
-	outline:none;
-	background: transparent;
-}
-.submit-btn
-{
-	width: 86%;
-	padding: 10px 30px;
+
+.button {
+	border: none;
+	outline: 0;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	background-color: #000;
+	text-align: center;
 	cursor: pointer;
-	display: block;
-	margin: auto;
-	background: #F3C693;
-	border: 0;
+	width: 100%;
+	font-size: 20px;
+}
+
+.button:hover {
+	background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+	.column {
+		width: 100%;
+		display: block;
+	}
+}
+
+.navigationBar {
+	background-color: #000000;
+	opacity: 0.5;
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	padding-left: 50px;
+	padding-right: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+}
+
+nav {
+	flex: 1;
+	text-align: right;
+	margin-top: 0px;
+}
+
+nav ul {
+	display: inline-block;
+	list-style: none;
+}
+
+nav ul li {
+	display: inline-block;
+	margin-right: 70px;
+	margin-left: 20px;
+}
+
+nav ul li a {
+	font-size: 25px;
+	color: rgb(243, 242, 242);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+nav ul li button {
+	font-size: 20px;
+	color: rgb(255, 250, 250);
 	outline: none;
-	border-radius: 30px;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-family: sans-serif;
 }
-.check-box
-{
-	margin: 30px 10px 34px 0;
+
+nav ul li button:hover {
+	color: aqua;
 }
-span
-{
-	color:#777;
-	font-size:12px;
-	bottom:68px;
-	position:absolute;
+
+nav ul li a:hover {
+	color: aqua;
 }
-#login
-{
-	left:50px;
+
+a {
+	text-decoration: none;
+	color: rgb(150, 164, 210);
+	font-size: 28px;
 }
-#login input
-{
-	color:white;
-	font-size:20;
+
+p {
+	font-weight: bold;
+	color: rgb(208, 176, 140);
+	font-size: 22px;
+	padding-bottom: 5;
+	text-align: center;
+}
+
+#tlt {
+	text-decoration: none;
+	color: rgb(223, 151, 69);
+	font-size: 30px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	text-align: center;
+}
+
+#header {
+	text-decoration: none;
+	margin-left: 50px;
+	color: rgb(157, 58, 12);
+	font-size: 40px;
+	font-family: sans-serif;
+	text-align: center;
+}
+
+.img {
+	text-align: center;
+}
+
+#top {
+	text-decoration: none;
+	color: rgb(150, 164, 210);
+	font-size: 28px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif 
+}
+#top:hover {
+	color: rgb(8, 58, 224); 
 }

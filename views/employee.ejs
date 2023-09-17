@@ -1,0 +1,152 @@
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Airport Management - Admin Login</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <style>
+        .bg{
+            background-color: rgb(231, 226, 219);
+        }
+        table {
+            margin-top: 50;
+            margin-left: 80;
+            width: 90%;
+            border-collapse: collapse;
+        }
+
+        tr{
+            border: none;
+        }
+
+        tr:hover {
+            background-color: #bfb9b9;
+        }
+
+        table,
+        th,
+        td {
+            border: none;
+        }
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .delete-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 20px;
+        }
+
+        .delete-button:hover {
+            background-color: #0056b3;
+        }
+
+        .time-button {
+            background-color: #07a431;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 20px;
+        }
+
+        .time-button:hover {
+            background-color: #06941c;
+        }
+
+
+        #ff {
+            margin-top: 40;
+            margin-bottom: 40;
+            font-size: 70px;
+            text-align: center;
+            color: rgb(3, 14, 61);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="bg">
+        <div class="navigationBar">
+            <div>
+                <a id="top" href='https://www.youtube.com/watch?v=gYi5P16l6eo'>DHAKA AIRPORT</a>
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/about'>About Us</a></li>
+                    <li><a href='/service'>Services</a></li>
+                    <li><a href='/contact'>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1 id="ff">Employee Information</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Salary</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <% for (let i=0; i < passengers.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= passengers[i][0] %>
+                    </td>
+                    <td>
+                        <%= passengers[i][1] %>
+                    </td>
+                    <td>
+                        <%= passengers[i][2] %>
+                    </td>
+                    <td>
+                        <%= passengers[i][3] %>
+                    </td>
+                    <td>
+                        <%= passengers[i][4] %>
+                    </td>
+                    <td>
+                        <%= passengers[i][5] %>
+                    </td>
+                    <td>
+                        <form method="POST" action="/delete">
+                            <input type="hidden" name="id" value="<%= passengers[i][0] %>">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="/editemployee">
+                            <input type="hidden" name="id" value="<%= passengers[i][0] %>">
+                            <button type="submit" class="time-button">edit</button>
+                        </form>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+</body>
+
+</html>

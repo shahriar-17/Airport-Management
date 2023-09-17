@@ -1,0 +1,75 @@
+/* Apply styles to the body of the verification page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #b63030;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This ensures the body takes up the full viewport height */
+}
+
+/* Style the background image */
+.bg {
+    width: 100%;
+    height: 100vh; /* Make it take up the full viewport height */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/p5.jpg);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+/* Style the container holding the verification form */
+.container {
+    max-width: 400px; /* Increase the width to a reasonable value */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Style the heading */
+h1 {
+    color: #333;
+}
+
+/* Style the verification code input field */
+#verificationCode {
+    width: 200px; /* Set the desired width here */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Style the Submit button */
+button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style the pop-up message */
+#popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000; /* Ensure it appears on top */
+}

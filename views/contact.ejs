@@ -1,0 +1,180 @@
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+
+        .about-section {
+            padding-top: 10;
+            padding: auto;
+            text-align: center;
+            background-color: #8e2a11;
+            color: white;
+            height: 15%;
+            font-family: Georgia, 'Times New Roman', Times, serif
+        }
+
+        .container {
+            padding: 0 16px;
+        }
+
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .title {
+            color: grey;
+        }
+
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #173de6;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        .navigationBar {
+            background-color: #540c03;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            padding-left: 50px;
+            padding-right: 10px;
+            padding-top: 10px;
+
+        }
+
+        nav {
+            flex: 1;
+            text-align: right;
+            margin-top: 0px;
+        }
+
+        nav ul {
+            display: inline-block;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 70px;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 25px;
+            color: rgb(243, 242, 242);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        nav ul li button {
+            font-size: 20px;
+            color: rgb(255, 250, 250);
+            outline: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+
+        nav ul li button:hover {
+            color: aqua;
+        }
+
+        nav ul li a:hover {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navigationBar">
+        <nav>
+            <ul id='MenuItems'>
+                <li><a href='/'>Home</a></li>
+                <li><a href='/contact'>About Us</a></li>
+                <li><a href='/service'>Services</a></li>
+                <li><a href='/contact'>Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="about-section">
+        <h1>Contact Us Page</h1>
+    </div>
+
+    <h2 style="text-align:center">Our Team</h2>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <img src="/images/seam.jpg" alt="Seam" style="width:100%">
+                <div class="container">
+                    <h2>Shahriar Ahmed Seam</h2>
+                    <p class="title">ID : 2005093</p>
+                    <p>Life is like a box of chocolates. You never know what you're gonna get.</p>
+                    <p>shahriarseam@gmail.com</p>
+                    <p><a href="https://www.facebook.com/00sHaHriAr00" ><button class="button">facebook</button></a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="card">
+                <img src="/images/taky.jpg" alt="Taky" style="width:100%" height="98%">
+                <div class="container">
+                    <h2>Taky Shahriar</h2>
+                    <p class="title">ID : 2005098</p>
+                    <p>Life is like riding a bicycle. To keep your balance, you must keep moving.</p>
+                    <p>taky.buet.cse@gmail.com</p>
+                    <p><a href="https://www.facebook.com/Java107?mibextid=ZbWKwL"><button class="button">facebook</button></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

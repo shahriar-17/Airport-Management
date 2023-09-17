@@ -5,7 +5,7 @@ const oracledb = require('oracledb');
 const dbConfig = {
   user          : "Airport_Management_System",
   password      : "123", 
-  connectString : "localhost:1521/orclpdb"
+  connectString : "localhost:1522/orclpdb"
 };
 
 router.use(express.urlencoded({ extended: true }));

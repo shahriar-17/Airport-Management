@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Email Verification</title>
+    <style>
+        .bg {
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/p4.jpg);
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+        }
+
+        .navigationBar {
+            background-color: #000000;
+            opacity: 0.5;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            padding-left: 50px;
+            padding-right: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+        }
+
+        nav {
+            flex: 1;
+            text-align: right;
+            margin-top: 0px;
+        }
+
+        nav ul {
+            display: inline-block;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 70px;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 25px;
+            color: rgb(243, 242, 242);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        nav ul li button {
+            font-size: 20px;
+            color: rgb(255, 250, 250);
+            outline: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+
+        nav ul li button:hover {
+            color: aqua;
+        }
+
+        nav ul li a:hover {
+            color: aqua;
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(150, 164, 210);
+            font-size: 28px;
+        }
+        #verification-heading {
+            color: white;
+            font-size: 40px;
+            margin-bottom: 10px;
+            margin-top: 100px;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #verification-message {
+            color: white;
+            font-size: 20px;
+            margin-top: 0;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #verificationCode {
+            padding: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-left: 100px;
+            margin-top: 30px;
+            width: 40%;
+            font-size: 18px;
+            text-align: center;
+        }
+        .verify{
+            margin-left: 360px;
+        }
+
+        #button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 5px;
+        }
+    </style>
+
+
+
+    </style>
+</head>
+
+<body>
+    <div class='bg'>
+        <div class="navigationBar">
+            <div>
+                <a href='https://www.youtube.com/watch?v=gYi5P16l6eo'>DHAKA AIRPORT</a>
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/contact'>About Us</a></li>
+                    <li><a href='/service'>Services</a></li>
+                    <li><a href='/contact'>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1 id='verification-heading' style="color: white;">Email Verification</h1>
+        <p id='verification-message' style="color: white;">A code has been sent to your email. Please check and verify your account.</p>
+        <div class='verify'>
+        <form id="verificationForm">
+            <input type="text" id="verificationCode" placeholder="Enter Code" required>
+            <button type="submit" id="button">Submit</button>
+        </form>
+        </div>
+
+        <!-- Pop-up message -->
+        <div id="popup"
+            style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.8); color: white; padding: 10px; border-radius: 5px;">
+            <p>Invalid code. Please try again.</p>
+        </div>
+
+        <script>
+            document.getElementById('verificationForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent the form from submitting
+
+                // Get the user-entered verification code
+                const userEnteredCode = document.getElementById('verificationCode').value;
+
+                // Send a request to the server to verify the code
+                fetch('/verify-code', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ code: userEnteredCode }), // Send the user-entered code to the server
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.valid) {
+                            // Code is valid, show success message and redirect after a delay
+                            var popup = document.getElementById('popup');
+                            popup.innerText = 'Code verified! Redirecting...';
+                            popup.style.display = 'block';
+                            setTimeout(function () {
+                                window.location.href = '/login_reg'; // Redirect to the /editprofile path
+                            }, 3000); // 3000 milliseconds (3 seconds)
+                        } else {
+                            // Code is invalid, show an error message and stay on the same page
+                            var popup = document.getElementById('popup');
+                            popup.style.display = 'block';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        // Handle any network or server errors here
+                    });
+            });
+        </script>
+    </div>
+</body>
+
+</html>

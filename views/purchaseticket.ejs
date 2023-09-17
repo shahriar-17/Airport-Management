@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Check</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <style>
+        .bg {
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/p5.jpg);
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+        }
+
+        #source,
+        #destination,
+        #purchase {
+
+            margin-left: 530px;
+            border-radius: 10px;
+        }
+
+        #source p,
+        #destination p,
+        #purchase p {
+            color: rgb(106, 98, 98);
+        }
+
+        #source select,
+        #destination select {
+            width: 45%;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #c3d5f0;
+            color: #333;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #purchaseForm {
+            margin-top: 20px;
+        }
+
+        #purchaseForm input[type="date"] {
+            width: 30%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #c3d5f0;
+            color: #333;
+            font-size: 20px;
+            margin-top: 2px;
+            text-align: center;
+            margin-left: 530px
+        }
+
+        #purchaseForm .sub {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #purchaseForm button {
+            background-color: #081847;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        #purchaseForm button:hover {
+            background-color: #555;
+        }
+
+        #top {
+            text-decoration: none;
+            color: rgb(150, 164, 210);
+            font-size: 28px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        #top:hover {
+            color: rgb(8, 58, 224);
+        }
+
+        #ff {
+            margin-top: 40;
+            margin-bottom: 40;
+            font-size: 70px;
+            text-align: center;
+            color: rgb(233, 232, 182);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="bg">
+        <div class="navigationBar">
+            <div>
+                <a id="top" href='https://www.youtube.com/watch?v=gYi5P16l6eo'>DHAKA AIRPORT</a>
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/about'>About Us</a></li>
+                    <li><a href='/services'>Services</a></li>
+                    <li><a href='/contacts'>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1 id="ff">DHAKA AIRPORT</h1>
+        <p style="color: rgb(128, 164, 186);">Source</p>
+        <div id="source" class="from">
+            <select id="sourceCity">
+                <option value="DHAKA">DHAKA</option>
+                <option value="SYLHET">SYLHET</option>
+                <option value="RANGPUR">RANGPUR</option>
+                <option value="JASHOR">JASHOR</option>
+                <option value="RIYAD">RIYAD</option>
+                <option value="LONDON">LONDON</option>
+                <option value="DUBAI">DUBAI</option>
+                <option value="LOS ANGELES">LOS ANGELES</option>
+                <option value="NEWYORK">NEWYORK</option>
+                <option value="DELLE">DELLE</option>
+                <option value="MADRID">MADRID</option>
+            </select>
+        </div>
+        <p style="color: rgb(128, 164, 186);">Destination</p>
+        <div id="destination" class="to">
+            <select id="destinationCity">
+                <option value="DHAKA">DHAKA</option>
+                <option value="SYLHET">SYLHET</option>
+                <option value="RANGPUR">RANGPUR</option>
+                <option value="JASHOR">JASHOR</option>
+                <option value="RIYAD">RIYAD</option>
+                <option value="LONDON">LONDON</option>
+                <option value="DUBAI">DUBAI</option>
+                <option value="LOS ANGELES">LOS ANGELES</option>
+                <option value="NEWYORK">NEWYORK</option>
+                <option value="DELLE">DELLE</option>
+                <option value="MADRID">MADRID</option>
+            </select>
+        </div>
+        <div class="purchase">
+            <form id="purchaseForm" action="/seatplan" method="POST">
+                <div>
+                    <p style="color: rgb(128, 164, 186);">Flight Time</p>
+                    <input type="date" name="flightDate">
+                </div>
+                <div class="sub"><button type="submit">Purchase Ticket</button></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sourceSelect = document.getElementById('source');
+            const destinationSelect = document.getElementById('destination');
+            const form = document.getElementById('purchaseForm');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const sourceValue = sourceSelect.querySelector('select').value;
+                const destinationValue = destinationSelect.querySelector('select').value;
+                const flightDate = form.querySelector('input[name="flightDate"]').value;
+
+                if (sourceValue === destinationValue) {
+                    alert('Source and destination cannot be the same.');
+                    return;
+                }
+
+                const ticketData = {
+                    source: sourceValue,
+                    destination: destinationValue,
+                    flightDate: flightDate,
+                };
+
+                fetch('/seatplan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(ticketData),
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.availableTickets) {
+                            // Available tickets found, redirect to /seatplan
+                            window.location.href = '/seatplan';
+                        } else {
+                            // No available tickets, show alert
+                            alert('No plane available on that date');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    </script>
+</body>
+
+</html>

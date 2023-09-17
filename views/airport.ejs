@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Airport Management - Admin Login</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/admin_login.css">
+
+    <style>
+        /* Your existing CSS styles */
+
+        /* Additional styles for the new elements */
+        #searchContainer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+
+        #searchInput {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            width: 60%;
+        }
+
+        #searchButton {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 20px;
+        }
+
+        #searchButton:hover {
+            background-color: #0056b3;
+        }
+
+        #refreshButton {
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border-radius: 20px;
+        }
+
+        #refreshButton:hover {
+            background-color: #218838;
+        }
+
+        h1 {
+            margin-top: 40;
+            margin-bottom: 0;
+            font-size: 60px;
+            text-align: center;
+            color: rgb(22, 151, 18);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #ff {
+            margin-top: 40;
+            margin-bottom: 40;
+            font-size: 70px;
+            text-align: center;
+            color: rgb(233, 232, 182);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        /* Style for the flight information container */
+
+        /* Style for the flight info container */
+        .flight-info {
+            padding: 10px;
+            margin-left: 525px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        /* Style for individual flight info paragraphs */
+        .flight-info p {
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+            width: 50%;
+            margin: 5px 0;
+            font-size: 35px;
+            color: #007BFF;
+            margin-bottom: 20px;
+        }
+
+        /* Add more specific styling for each paragraph if needed */
+        .flight-info p:first-child {
+
+            font-weight: bold;
+            color: #007BFF;
+            font-size: 35px;
+        }
+
+        /* Style for the "No flights found" message */
+        .flight-info.no-flights {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FF0000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="navigationBar">
+            <div>
+                <a id="top" href='https://www.youtube.com/watch?v=gYi5P16l6eo'>DHAKA AIRPORT</a>
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/about'>About Us</a></li>
+                    <li><a href='/service'>Services</a></li>
+                    <li><a href='/contact'>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1 id="ff">Planes List</h1>
+
+        <div id="searchContainer">
+            <input type="text" id="searchInput" placeholder="Enter Airport Name">
+            <button id="searchButton">Search</button>
+            <button id="refreshButton">Refresh</button>
+        </div>
+
+        <!-- Container for displaying flight information -->
+        <div id="flightInfoContainer">
+        </div>
+
+        <script>
+            const searchInput = document.getElementById('searchInput');
+            const searchButton = document.getElementById('searchButton');
+            const refreshButton = document.getElementById('refreshButton');
+            const flightInfoContainer = document.getElementById('flightInfoContainer');
+
+            // Event listener for the search button
+            searchButton.addEventListener('click', function () {
+                // Get the airport name entered by the user
+                const airportName = searchInput.value;
+
+                // Send a request to the server to get flight information based on the airport name
+                fetch(`/getplanes?airportName=${airportName}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Clear the previous flight information
+                        flightInfoContainer.innerHTML = '';
+
+                        // Check if data contains flight information
+                        if (data && data.length > 0) {
+                            // Loop through the flight data and create flight info containers
+
+                            const flightInfo = document.createElement('div');
+                            flightInfo.classList.add('flight-info');
+
+                            // Populate flight information into the container
+                            flightInfo.innerHTML = `
+                                    <p>Flight Name: ${data[1]}</p>
+                                    <p>Flight Number: ${data[0]}</p>
+                                    <p>Flight ID: ${data[2]}</p>
+                                    <p>City: ${data[3]}</p>
+                                    <p>Capacity: ${data[4]}</p>
+                                    <p>Country: ${data[5]}</p>
+                                `;
+
+                            // Append the flight info container to the flightInfoContainer
+                            flightInfoContainer.appendChild(flightInfo);
+
+                        } else {
+                            // Display a message if no flights were found
+                            flightInfoContainer.innerHTML = '<div class="flight-info no-flights">No flights found</div>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching flight information:', error);
+                    });
+            });
+
+            // Event listener for the refresh button
+            refreshButton.addEventListener('click', function () {
+                location.reload();
+            });
+        </script>
+    </div>
+</body>
+
+</html>

@@ -37,7 +37,7 @@ a:hover {
 .bg {
     height: 100%;
     width: 100%;
-    background-image: linear-gradient(rgba(30, 29, 29, 0.4), rgba(15, 14, 14, 0.4)), url(/images/2.jpg);
+    background-image: linear-gradient(rgba(30, 29, 29, 0.4), rgba(15, 14, 14, 0.4)), url(/images/p6.jpg);
     background-position: center;
     background-size: cover;
     position: absolute;

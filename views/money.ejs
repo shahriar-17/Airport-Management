@@ -1,0 +1,157 @@
+<html>
+
+<head>
+    <style>
+        .bg {
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/p8.jpg);
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+        }
+
+        .financial-box {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            margin-left: 110px;
+            margin-top: 10px;
+            width: 150%;
+        }
+
+        .financial-title {
+            width: 90px;
+            color: rgb(230, 176, 126);
+            font-size: 28px;
+            font-weight: bold;
+            margin-left: 300px;
+            margin-top: 65px;
+            margin-bottom: 1px;
+        }
+
+        .financial-box .box {
+            margin-left: 5;
+            margin-top: 50;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding-top: 0.1px;
+            padding-bottom: 0.1px;
+        }
+
+        .financial-box1 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            margin-left: 110px;
+            margin-top: 100px;
+            width: 150%;
+            
+        }
+
+        .financial-box1 .box {
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding-top: 0.1px;
+            padding-bottom: 0.1px;
+
+        }
+
+        .financial-title1 {
+            width: 90px;
+            color: rgb(230, 176, 126);
+            font-size: 28px;
+            font-weight: bold;
+            margin-left: 300px;
+            margin-top: 10px;
+            margin-bottom: 1px;
+        }
+
+        .financial-data {
+            flex: 1;
+            color: black;
+        }
+
+        .box {
+            padding: 10px;
+            background-color: rgb(248, 220, 205);
+            opacity: 0.5;
+            text-align: center;
+            width: 30%;
+            margin-left: 10px;
+            margin-top: 10px;
+            font-size: 50px;
+            color: black;
+            
+        }
+
+        #header1 {
+            text-decoration: none;
+            margin-left: 50px;
+            margin-top: 30px;
+            margin-bottom: 0px;
+            color: rgb(9, 9, 69);
+            font-size: 50px;
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Airport Management - Admin Login</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+    <div class="bg">
+        <div class="navigationBar">
+            <div>
+                <a id="top" href='https://www.youtube.com/watch?v=gYi5P16l6eo'>DHAKA AIRPORT</a>
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/about'>About Us</a></li>
+                    <li><a href='/service'>Services</a></li>
+                    <li><a href='/contact'>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <h1 id="header1">Financial</h1>
+        <div class="financial-box">
+            <div class="financial-title" >Credit:</div>
+            <div class="financial-data">
+                <div class="box">
+                    <p style="color: rgb(3, 3, 31); font-size: 30px;">
+                        <%= credit %>$
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="financial-box1">
+            <div class="financial-title1">Debit:</div>
+            <div class="financial-data">
+                <div class="box">
+                    <p style="color: rgb(3, 3, 31); font-size: 30px">
+                        <%= debit %>$
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="financial-box1">
+            <div class="financial-title1">Profit:</div>
+            <div class="financial-data">
+                <div class="box">
+                    <p style="color: rgb(3, 3, 31); font-size: 30px">
+                        <%= profit %>$
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

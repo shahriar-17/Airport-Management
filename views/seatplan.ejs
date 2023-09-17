@@ -1,0 +1,306 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seat Plan</title>
+    <style>
+        .bg {
+            background-color: rgb(237, 237, 220);
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .column {
+            float: left;
+            width: 90%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+            margin-left: 80;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+
+        .about-section {
+            padding-top: 10;
+            padding: auto;
+            text-align: center;
+            background-color: #910c0c;
+            color: white;
+            height: 15%;
+            opacity: 0.5;
+            font-family: Georgia, 'Times New Roman', Times, serif
+        }
+
+        .container {
+            padding: 0 16px;
+        }
+
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .title {
+            color: grey;
+        }
+
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+
+
+        .seat-button {
+            width: 30px;
+            height: 30px;
+            margin: 2px;
+            background-color: red;
+            border: none;
+            cursor: pointer;
+        }
+
+        #seatPlan {
+            display: grid;
+            grid-column-gap: 100px;
+            grid-row-gap: 10px;
+            justify-content: center;
+            align-items: center;
+            margin: 20px auto;
+            width: fit-content;
+            margin-left: 465px;
+        }
+
+        .seat-button {
+            width: 60px;
+            height: 40px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            background-color: rgb(171, 38, 38);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-size: 18px;
+            color: white;
+        }
+
+        .seat-button.green {
+            background-color: rgb(34, 73, 34);
+        }
+
+        .navigationBar {
+            background-color: #470303;
+            display: flex;
+            align-items: center;
+            padding: 5px;
+            padding-left: 50px;
+            padding-right: 10px;
+            padding-top: 10px;
+            opacity: 0.;
+
+        }
+
+        nav {
+            flex: 1;
+            text-align: right;
+            margin-top: 0px;
+        }
+
+        nav ul {
+            display: inline-block;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 70px;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            font-size: 25px;
+            color: rgb(243, 242, 242);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        nav ul li button {
+            font-size: 20px;
+            color: rgb(255, 250, 250);
+            outline: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+
+        nav ul li button:hover {
+            color: aqua;
+        }
+
+        nav ul li a:hover {
+            color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="navigationBar">
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='#'>About Us</a></li>
+                    <li><a href='#'>Services</a></li>
+                    <li><a href='#'>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="about-section">
+            <h1>Airplane Seat Booking</h1>
+        </div>
+
+        <h2 style="text-align:center">Book Seats</h2>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <div id="seatPlan"></div>
+                    <div class="container">
+                        <h2 style="text-align:center">Seat Plan</h2>
+                        <p style="text-align:center">Click Purchase After Selecting</p>
+                        <p><button class="button" id="purchaseButton">Purchase</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const seatPlan = document.getElementById("seatPlan");
+        const purchaseButton = document.getElementById("purchaseButton");
+        const selectedSeats = new Set();
+
+        // Create a 10x6 grid
+        const numRows = 10;
+        const numCols = 6;
+
+        for (let row = 1; row <= numRows; row++) {
+            const div = document.createElement("div");
+            for (let col = 1; col <= numCols; col++) {
+                const seatButton = document.createElement("button");
+                seatButton.className = "seat-button";
+                seatButton.id = `${row}-${col}`;
+                seatButton.textContent = `${row}-${col}`;
+                seatButton.addEventListener("click", function () {
+                    toggleSeatColorAndStoreName(this);
+                });
+                div.appendChild(seatButton);
+            }
+            seatPlan.appendChild(div);
+        }
+
+        // Function to toggle seat color and store selected seat names
+        function toggleSeatColorAndStoreName(button) {
+            const seatName = button.id;
+            if (selectedSeats.has(seatName)) {
+                button.style.backgroundColor = "rgb(171, 38, 38)";
+                selectedSeats.delete(seatName);
+            } else {
+                button.style.backgroundColor = "green";
+                selectedSeats.add(seatName);
+            }
+        }
+
+        // Function to handle the purchase button click
+        purchaseButton.addEventListener("click", function () {
+            const seatNames = Array.from(selectedSeats);
+            const seatData = seatNames.join(", ");
+            downloadTextFile("selected_seats.txt", seatData);
+        });
+
+        // Function to download text file
+        function downloadTextFile(filename, text) {
+            const element = document.createElement("a");
+            element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text));
+            element.setAttribute("download", filename);
+            element.style.display = "none";
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        }
+
+        // Function to handle the purchase button click
+        purchaseButton.addEventListener("click", function () {
+            const seatNames = Array.from(selectedSeats);
+            const seatData = seatNames.join(", ");
+            downloadTextFile("selected_seats.txt", seatData);
+
+            // Show a "Purchased!" message
+            const popup = document.createElement("div");
+            popup.innerHTML = "Purchased!";
+            popup.style.position = "fixed";
+            popup.style.top = "50%";
+            popup.style.left = "50%";
+            popup.style.transform = "translate(-50%, -50%)";
+            popup.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+            popup.style.color = "white";
+            popup.style.padding = "20px";
+            popup.style.borderRadius = "5px";
+            popup.style.zIndex = "999";
+            document.body.appendChild(popup);
+
+            // Automatically hide the message after 3 seconds
+            setTimeout(function () {
+                document.body.removeChild(popup);
+
+
+                var fileUrl = '/Ticket.txt';
+                var a = document.createElement('a');
+                a.href = fileUrl;
+                a.download = 'Ticket.txt';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+
+                window.location.href = '/explore';
+            }, 3000);
+        });
+
+    </script>
+</body>
+
+</html>

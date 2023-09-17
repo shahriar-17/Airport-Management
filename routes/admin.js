@@ -4,13 +4,13 @@ router.use(express.urlencoded({ extended: true }));
 
 
 //admin pageo
-router.post('/', (req,res)=>{
-    const ID = req.body.ID;
-    const Password = req.body.password;
-    const SecurityCode = req.body.securitycode;
-    console.log(ID,Password,SecurityCode)
-    res.render('admin',{ID, Password, SecurityCode})
-})
+// router.post('/', (req,res)=>{
+//     const ID = req.body.ID;
+//     const Password = req.body.password;
+//     const SecurityCode = req.body.securitycode;
+//     console.log(ID,Password,SecurityCode)
+//     res.render('admin',{ID, Password, SecurityCode})
+// })
 
 
 // app.post('/admin', async (req,res)=>{  //send to admin page

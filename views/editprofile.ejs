@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8">
+    <title>edit profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            margin-top: 20px;
+        }
+
+        .avatar {
+            width: 200px;
+            height: 200px;
+        }
+
+        .bg {
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(/images/p3.jpg);
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+        }
+
+        .navigationBar {
+            background-color: #000000;
+            opacity: 0.5;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            padding-left: 50px;
+            padding-right: 10px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+        }
+
+        nav {
+            flex: 1;
+            text-align: right;
+            margin-top: 0px;
+        }
+
+        nav ul {
+            display: inline-block;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 70px;
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            font-size: 25px;
+            color: rgb(243, 242, 242);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        nav ul li button {
+            font-size: 20px;
+            color: rgb(255, 250, 250);
+            outline: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-family: sans-serif;
+        }
+
+        nav ul li button:hover {
+            color: aqua;
+        }
+
+        nav ul li a:hover {
+            color: aqua;
+        }
+
+        #top {
+            text-decoration: none;
+            color: rgb(150, 164, 210);
+            font-size: 28px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+
+        #top:hover {
+            color: rgb(8, 58, 224);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg">
+        <div class="navigationBar">
+            <div>
+                <a id="top" href='https://www.youtube.com/watch?v=gYi5P16l6eo'>DHAKA AIRPORT</a>
+            </div>
+            <nav>
+                <ul id='MenuItems'>
+                    <li><a href='/'>Home</a></li>
+                    <li><a href='/about'>About Us</a></li>
+                    <li><a href='/services'>Services</a></li>
+                    <li><a href='/contacts'>Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="container bootstrap snippets bootdey">
+            <h1 class="text-primary">Edit Profile</h1>
+            <hr>
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                            class="avatar img-circle img-thumbnail" alt="avatar">
+                        <h6>Upload a different photo...</h6>
+                        <input type="file" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-9 personal-info">
+                    <h3>Personal info</h3>
+                    <form class="form-horizontal" role="form" action="/updateuser" method="POST">
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">First name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" name="first_name" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Last name:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" name="last_name" placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Age:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="number" name="age" placeholder="Age" value>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Email:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" name="email" placeholder="example@gmail.com">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">Address:</label>
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" name="address" placeholder="Address">
+                            </div>
+                        </div>
+                        <input type="hidden" name="id" value="<%= id %>">
+                        <div class="form-group">
+                            <div class="col-lg-8 col-lg-offset-3">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+    </script>
+</body>
+
+</html>
